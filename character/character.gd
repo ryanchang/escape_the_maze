@@ -20,7 +20,7 @@ var moves = {
 
 
 func move(dir):
-	$AnimationPlayer.playback_speed = speed
+	$AnimationPlayer.speed_scale = speed
 	facing = dir
 	if raycasts[facing].is_colliding():
 		return
@@ -33,7 +33,7 @@ func move(dir):
 			position + moves[facing] * tile_size,
 			1.0 / speed)
 	tween.set_trans(tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(tween.EASE_IN_OUT)
 	tween.connect("finished", on_tween_finished)
 	return true
 

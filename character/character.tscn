@@ -1,9 +1,40 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyiv4ptq70weh"]
 
-[ext_resource type="Script" path="res://character.gd" id="1_t21wv"]
+[ext_resource type="Script" path="res://character/character.gd" id="1_t21wv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plx7j"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_x131c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_shkwo"]
+resource_name = "down"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
 [sub_resource type="Animation" id="Animation_d8bje"]
 resource_name = "left"
@@ -53,37 +84,6 @@ tracks/0/keys = {
 "values": [15, 16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_shkwo"]
-resource_name = "down"
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_x131c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdcwe"]
 _data = {
 "RESET": SubResource("Animation_x131c"),
@@ -95,6 +95,8 @@ _data = {
 
 [node name="Character" type="Area2D"]
 script = ExtResource("1_t21wv")
+speed = 1
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, 0)
