@@ -2,7 +2,7 @@ extends Area2D
 
 @export var speed:int
 
-var tile_size = 64
+var tile_size = 64.0
 var can_move = true
 var facing = "right"
 var moves = {
@@ -10,7 +10,8 @@ var moves = {
 		"left": Vector2(-1, 0),
 		"up": Vector2(0, -1),
 		"down": Vector2(0, 1),
-	}
+}
+
 @onready var raycasts = {
 		"right": $RayCastRight,
 		"left": $RayCastLeft,
@@ -28,9 +29,10 @@ func move(dir):
 	can_move = false
 	$AnimationPlayer.play(facing)
 	var tween = create_tween()
+	print("%s %s %s" % [dir, moves[facing], moves[facing] * Vector2(tile_size)])
 	tween.tween_property($Sprite2D,
 			'position',
-			position + moves[facing] * tile_size,
+			position + moves[facing] * Vector2(tile_size),
 			1.0 / speed)
 	tween.set_trans(tween.TRANS_SINE)
 	tween.set_ease(tween.EASE_IN_OUT)
