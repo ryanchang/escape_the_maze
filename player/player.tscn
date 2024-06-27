@@ -5,11 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://bfojm1il36yin" path="res://assets/player.png" id="2_x7dgo"]
 
 [node name="Player" instance=ExtResource("1_eqmv5")]
-collision_layer = 2
 collision_mask = 13
 script = ExtResource("2_7e3ff")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_x7dgo")
 
+[node name="RayCastRight" parent="." index="3"]
+collision_mask = 0
+
+[node name="RayCastLeft" parent="." index="4"]
+collision_mask = 0
+
+[node name="RayCastDown" parent="." index="5"]
+collision_mask = 0
+
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
